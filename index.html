@@ -114,7 +114,7 @@
       if (biotipo === "Mesoprosopo") dvo -= 1.19;
       if (biotipo === "Euriprosopo") dvo -= 2.19;
 
-      // Redondeo docente a múltiplos de 0,5 mm
+      // Redondeo a la décima
       dvo = Math.round(dvo * 10) / 10;
 
       document.getElementById("resultado").innerText =
