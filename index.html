@@ -74,7 +74,7 @@
     <h1>CALCULADORA DVO</h1>
 
     <label>Distancia ojo‑oreja izquierda (mm)</label>
-    <input type="number" id="distancia" step="0.01" placeholder="Ej: 55,5" />
+    <input type="number" id="distancia" step="0.1" placeholder="Ej: 65.5" />
 
     <label>Sexo</label>
     <select id="sexo">
@@ -118,7 +118,7 @@
       dvo = Math.round(dvo * 10) / 10;
 
       document.getElementById("resultado").innerText =
-        "DVO determinada: " + dvo.toString().replace(".", ",") + " mm";
+        "DVO determinada: " + dvo.toString() + " mm";
     }
   </script>
 
