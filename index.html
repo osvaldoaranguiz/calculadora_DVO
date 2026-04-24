@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculadora DVO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding: 20px;
+    }
+
+    .contenedor {
+      max-width: 420px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    label {
+      margin-top: 14px;
+      display: block;
+      font-weight: bold;
+    }
+
+    /* 🔹 Unificamos tamaño y aspecto */
+    input,
+    select,
+    button {
+      width: 100%;
+      height: 44px;
+      padding: 8px 10px;
+      margin-top: 6px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    .resultado {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+    <h1>Calculadora DVO</h1>
+
+    <label>Distancia ojo‑oreja izquierda (mm)</label>
+    <input type="number" id="distancia" step="0.01" placeholder="Ej: 55,4" />
+
+    <label>Sexo</label>
+    <select id="sexo">
+      <option value="" disabled selected>Seleccione una opción</option>
+      <option value="Hombre">Hombre</option>
+      <option value="Mujer">Mujer</option>
+    </select>
+
+    <label>Biotipo facial</label>
+    <select id="biotipo">
+      <option value="" disabled selected>Seleccione una opción</option>
+      <option value="Leptoprosopo">Leptoprosopo</option>
+      <option value="Mesoprosopo">Mesoprosopo</option>
+      <option value="Euriprosopo">Euriprosopo</option>
+    </select>
+
+    <button onclick="calcularDVO()">Calcular DVO</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularDVO() {
+      const distancia = parseFloat(document.getElementById("distancia").value);
+      const sexo = document.getElementById("sexo").value;
+      const biotipo = document.getElementById("biotipo").value;
+
+      if (isNaN(distancia) || !sexo || !biotipo) {
+        document.getElementById("resultado").innerText =
+          "Por favor complete todos los campos.";
+        return;
+      }
+
+      let dvo = 42.17 + (0.46 * distancia);
+
+      if (sexo === "Mujer") dvo -= 3.38;
+      if (biotipo === "Mesoprosopo") dvo -= 1.19;
+      if (biotipo === "Euriprosopo") dvo -= 2.19;
+
+      // Redondeo docente a múltiplos de 0,5 mm
+      dvo = Math.round(dvo * 2) / 2;
+
+      document.getElementById("resultado").innerText =
+        "DVO determinada: " + dvo.toString().replace(".", ",") + " mm";
+    }
+  </script>
+
+</body>
+</html>
+``
