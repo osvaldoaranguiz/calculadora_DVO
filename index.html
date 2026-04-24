@@ -108,11 +108,11 @@
         return;
       }
 
-      let dvo = 42.17 + (0.46 * distancia);
+      let dvo = 42.173 + (0.464 * distancia);
 
-      if (sexo === "Mujer") dvo -= 3.38;
-      if (biotipo === "Mesoprosopo") dvo -= 1.19;
-      if (biotipo === "Euriprosopo") dvo -= 2.19;
+      if (sexo === "Mujer") dvo -= 3.385;
+      if (biotipo === "Mesoprosopo") dvo -= 1.197;
+      if (biotipo === "Euriprosopo") dvo -= 2.195;
 
       // Redondeo a la décima
       dvo = Math.round(dvo * 10) / 10;
